@@ -1,0 +1,78 @@
+GET-https://172.20.0.116/restconf/data/ietf-interfaces:interfaces
+Accept--->application/yang-data+xml
+Content-Type--->application/yang-data+xml
+BasicAuth
+admin
+cisco123
+
+<interface xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+  <name>GigabitEthernet1</name>
+  <description>RESTCONF Modified Interface</description>
+  <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+  <enabled>true</enabled>
+  <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+    <address>
+      <ip>172.20.0.116</ip>
+      <netmask>255.255.255.0</netmask>
+    </address>
+  </ipv4>
+</interface>
+
+PUT----for updating
+https://172.20.0.116/restconf/data/ietf-interfaces:interfaces/interface=Loopback11
+Accept--->application/yang-data+xml
+Content-Type--->application/yang-data+xml
+BasicAuth
+admin
+cisco123
+
+<interface xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+    <name>Loopback11</name>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+    <enabled>true</enabled>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+        <address>
+            <ip>12.0.0.4</ip> <!-- New IP address -->
+            <netmask>255.0.0.0</netmask>
+        </address>
+    </ipv4>
+</interface>
+
+POST-------------------->to create new loopback
+method:POST
+Post Url:https://172.20.0.116/restconf/data/ietf-interfaces:interfaces
+Accept--->application/yang-data+xml
+Content-Type--->application/yang-data+xml
+BasicAuth
+admin
+cisco123
+
+<interface xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"
+           xmlns:if="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+    <name>Loopback11</name>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+    <enabled>true</enabled>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+        <address>
+            <ip>12.0.0.2</ip>
+            <netmask>255.0.0.0</netmask>
+        </address>
+    </ipv4>
+</interface>
+
+
+to delete new created loopback
+method: DELETE
+Accept--->application/yang-data+xml
+Content-Type--->application/yang-data+xml
+BasicAuth
+admin
+cisco123
+
+Delete url:
+https://172.20.0.109/restconf/data/ietf-interfaces:interfaces/interface=Loopback11
+no need of rquest body
+
+
+
+SS commands and sh ip int br
